@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
-function BlogPostForm({ onSubmit }) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+function BlogPostForm({ onSubmit, initialValues }) {
+  const [title, setTitle] = useState(initialValues.title);
+  const [content, setContent] = useState(initialValues.content);
   return (
     <View>
       <Text style={styles.label}>Title: </Text>
@@ -29,6 +22,13 @@ function BlogPostForm({ onSubmit }) {
     </View>
   );
 }
+
+BlogPostForm.defaultProps = {
+  initialValues: {
+    title: "",
+    content: "",
+  },
+};
 
 const styles = StyleSheet.create({
   input: {
