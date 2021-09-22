@@ -13,21 +13,25 @@ import {
 function CreateScreen({ navigation }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { addBlogPost } = useContext(Context);
   return (
     <View>
-      <Text style={styles.label}>Title</Text>
+      <Text style={styles.label}>Title: </Text>
       <TextInput
         style={styles.input}
         value={title}
-        onChange={(text) => setTitle(text)}
+        onChangeText={(text) => setTitle(text)}
       />
-      <Text style={styles.label}>Enter Content</Text>
+      <Text style={styles.label}>Content: </Text>
       <TextInput
         style={styles.input}
         value={content}
-        onChange={(text) => setContent(text)}
+        onChangeText={(text) => setContent(text)}
       />
-      <Button title="Add Blog Post" />
+      <Button
+        title="Add Blog Post"
+        onPress={() => addBlogPost(title, content)}
+      />
     </View>
   );
 }
