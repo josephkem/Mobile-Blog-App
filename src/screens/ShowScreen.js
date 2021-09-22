@@ -8,6 +8,7 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 function ShowScreen({ navigation }) {
   const { state } = useContext(Context);
@@ -17,9 +18,20 @@ function ShowScreen({ navigation }) {
   return (
     <View>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   );
 }
+
+ShowScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+        <FontAwesome name="pencil-square" size={30} />
+      </TouchableOpacity>
+    ),
+  };
+};
 
 const styles = StyleSheet.create({});
 
