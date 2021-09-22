@@ -26,7 +26,11 @@ function ShowScreen({ navigation }) {
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
-      <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Edit", { id: navigation.getParam("id") })
+        }
+      >
         <FontAwesome name="pencil-square" size={30} />
       </TouchableOpacity>
     ),
